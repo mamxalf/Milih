@@ -33,5 +33,10 @@ module Milih
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # assign rails credentials to ENV
+    Rails.application.credentials[Rails.env.to_sym].map do |key, value|
+      ENV[key.to_s] = value.to_s
+    end
   end
 end

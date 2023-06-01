@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'dashboards', to: 'dashboard#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }

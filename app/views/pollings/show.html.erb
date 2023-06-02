@@ -1,16 +1,36 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl"><%= @polling.title %></h1>
+  <h2 class="text-4xl"><%= seconds_to_hms(@polling.duration) %></h2>
 
-    <h1>TODO: align show</h1>
-    <%#= render @polling %>
-
-    <%= link_to 'Edit this polling', edit_polling_path(@polling), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this polling', polling_path(@polling), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  <div class="contents">
+    <div class="my-5">
+      <label for="polling_polling_answer">Polling Answer 1</label>
+      <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 mt-2">
+        <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
+      </div>
     </div>
-    <%= link_to 'Back to pollings', pollings_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <div class="my-5">
+      <label for="polling_polling_answer">Polling Answer 2</label>
+      <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 mt-2">
+        <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
+      </div>
+    </div>
+
+    <div class="my-5">
+      <label for="polling_polling_answer">Polling Answer 3 (Optional)</label>
+      <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 mt-2">
+        <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
+      </div>
+    </div>
+
+    <div class="my-5">
+      <label for="polling_polling_answer">Polling Answer 4 (Optional)</label>
+      <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 mt-2">
+        <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 75%"> 75%</div>
+      </div>
+    </div>
   </div>
+
+  <%= link_to 'Back to pollings', pollings_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

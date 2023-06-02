@@ -13,13 +13,34 @@
 
   <div class="my-5">
     <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
   </div>
 
   <div class="my-5">
     <%= form.label :duration %>
-    <%= form.datetime_field :duration, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.datetime_field :duration, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
   </div>
+
+  <div class="my-5">
+    <%= form.label :polling_answer, "Polling Answer 1" %>
+    <%= form.text_field :polling_answer, name: 'polling_answers[]', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :polling_answer, "Polling Answer 2" %>
+    <%= form.text_field :polling_answer, name: 'polling_answers[]', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :polling_answer, "Polling Answer 3 (Optional)" %>
+    <%= form.text_field :polling_answer, name: 'polling_answers[]', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :polling_answer, "Polling Answer 4 (Optional)" %>
+    <%= form.text_field :polling_answer, name: 'polling_answers[]', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>

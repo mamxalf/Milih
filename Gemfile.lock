@@ -67,6 +67,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     ast (2.4.2)
+    backports (3.24.0)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -234,6 +235,8 @@ GEM
       railties (>= 6.0.0)
     thor (1.2.2)
     timeout (0.3.2)
+    token_phrase (1.0.6)
+      backports
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -277,6 +280,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   tailwindcss-rails
+  token_phrase (~> 1.0, >= 1.0.6)
   turbo-rails
   tzinfo-data
   web-console

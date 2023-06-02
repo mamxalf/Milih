@@ -25,16 +25,21 @@ class PollingsController < ApplicationController
 
   # POST /pollings or /pollings.json
   def create
-    @polling = Polling.new(polling_params)
-
-    respond_to do |format|
-      if @polling.save
-        format.html { redirect_to polling_url(@polling), notice: 'Polling was successfully created.' }
-        format.json { render :show, status: :created, location: @polling }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @polling.errors, status: :unprocessable_entity }
+    ActiveRecord::Base.transaction do
+      @polling = Polling.create!(polling_params)
+      polling_answers = params[:polling_answers].compact_blank.map do |answer|
+        { polling_id: @polling.id, description: answer }
       end
+      PollingAnswer.insert_all!(polling_answers) # rubocop:disable Rails/SkipsModelValidations
+    end
+    respond_to do |format|
+      format.html { redirect_to polling_url(@polling), notice: 'Polling was successfully created.' }
+      format.json { render :show, status: :created, location: @polling }
+    end
+  rescue ActiveRecord::Rollback => e
+    respond_to do |format|
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: e, status: :unprocessable_entity }
     end
   end
 

@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   # polling's
   resources :pollings
+  # resources :polling_answers
 
   # dashboard index
   get 'dashboards', to: 'dashboard#index'

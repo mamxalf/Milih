@@ -75,6 +75,7 @@ class PollingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def polling_params
+    params['polling']['duration'] = Time.parse(params['polling']['duration']).utc
     params.require(:polling).permit(:title, :duration).merge(user_id: current_user.id)
   end
 end

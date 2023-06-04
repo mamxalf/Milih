@@ -2,7 +2,11 @@
 
 Rails.application.routes.draw do
   # polling's
-  resources :pollings
+  resources :pollings do
+    collection do
+      get 'user/:code', to: 'user_polling#form', as: 'user_polling'
+    end
+  end
   # resources :polling_answers
 
   # dashboard index

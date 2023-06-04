@@ -2,6 +2,7 @@
 
 class Polling < ApplicationRecord
   before_create :generate_code
+  after_create_commit { broadcast_append_to user_id }
 
   has_many :polling_answers, dependent: :destroy
 

@@ -52,8 +52,9 @@
                 </th>
               </tr>
               </thead>
-              <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-              <%= render @pollings %>
+              <%= turbo_stream_from current_user.id %>
+              <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900" is="turbo-frame" id="pollings">
+                <%= render @pollings %>
               </tbody>
             </table>
           </div>

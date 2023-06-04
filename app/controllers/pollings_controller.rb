@@ -7,7 +7,7 @@ class PollingsController < ApplicationController
 
   # GET /pollings or /pollings.json
   def index
-    @pagy, @pollings = pagy(Polling.includes([:polling_answers]).where(user_id: current_user.id))
+    @pagy, @pollings = pagy(Polling.includes([:polling_answers]).where(user_id: current_user.id).order(created_at: :desc))
   end
 
   # GET /pollings/1 or /pollings/1.json

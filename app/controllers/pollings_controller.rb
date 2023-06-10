@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PollingsController < ApplicationController
+  before_action :authenticate_user!
+
   layout 'dashboard'
 
   before_action :set_polling, only: %i[show edit update destroy]

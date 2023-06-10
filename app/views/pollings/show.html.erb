@@ -8,7 +8,7 @@
   </div>
   <div class="contents">
     <% @polling.polling_answers.each_with_index do |polling_answer, index| %>
-      <%== render partial: 'polling_bar', locals: { polling_answer: polling_answer, index: index } %>
+      <%== render partial: 'polling_bar', locals: { polling_answer: polling_answer, index: index, total_amount: @total_amount } %>
     <% end %>
   </div>
 

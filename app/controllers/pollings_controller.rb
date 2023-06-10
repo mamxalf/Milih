@@ -16,7 +16,8 @@ class PollingsController < ApplicationController
 
   # GET /pollings/1 or /pollings/1.json
   def show
-    @total_amount = @polling.polling_answers.pluck(:amount).sum
+    @polling_answers = @polling.polling_answers
+    @total_amount = @polling_answers.pluck(:amount).sum
   end
 
   # GET /pollings/new

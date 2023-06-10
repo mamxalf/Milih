@@ -8,13 +8,7 @@
   </div>
   <div class="contents">
     <% @polling.polling_answers.each_with_index do |polling_answer, index| %>
-      <div class="my-5">
-        <span id="code" class="bg-blue-100 text-blue-800 text-md text-center font-medium mx-auto px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">Polling <%= index + 1 %></span>
-        <h1><%= polling_answer.description %></h1>
-        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 mt-2">
-          <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: <%= polling_answer.amount * 100 / @total_amount %>%"><%= polling_answer.amount * 100 / @total_amount %>%</div>
-        </div>
-      </div>
+      <%== render partial: 'polling_bar', locals: { polling_answer: polling_answer, index: index } %>
     <% end %>
   </div>
 

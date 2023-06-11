@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
@@ -6,7 +6,7 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
-    './node_modules/flowbite/**/*.js'
+    './node_modules/flowbite/**/*.js',
   ],
   darkMode: 'class',
   theme: {
@@ -21,6 +21,6 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
-    require('flowbite/plugin')
-  ]
-}
+    require('flowbite/plugin'),
+  ],
+};

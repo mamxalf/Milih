@@ -6,8 +6,8 @@
   <div class="mt-5 p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
     <span class="font-medium">INFO!</span> This will be realtime for the result.
   </div>
-  <div class="contents">
-    <% @polling.polling_answers.each_with_index do |polling_answer, index| %>
+  <div class="contents" data-controller="pollings">
+    <% @polling_answers.each_with_index do |polling_answer, index| %>
       <%== render partial: 'polling_bar', locals: { polling_answer: polling_answer, index: index, total_amount: @total_amount } %>
     <% end %>
   </div>

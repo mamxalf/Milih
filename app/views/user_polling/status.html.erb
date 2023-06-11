@@ -1,0 +1,7 @@
+<% if notice.present? %>
+  <%== render partial: 'user_polling/status/success', locals: { message: notice } %>
+<% elsif alert.present? %>
+  <%== render partial: 'user_polling/status/not_found', locals: { message: alert } %>
+<% else %>
+  <%== render partial: 'user_polling/status/not_found', locals: { message: "Page not found!" } %>
+<% end %>

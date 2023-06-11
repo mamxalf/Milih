@@ -1,10 +1,11 @@
 import { Controller } from '@hotwired/stimulus';
-import consumer from '../channels/consumer';
+// import consumer from '../channels/consumer';
+import { createConsumer } from '@rails/actioncable';
 
 // Connects to data-controller="pollings"
 export default class extends Controller {
   connect() {
-    this.subscription = consumer.subscriptions.create(
+    this.subscription = createConsumer().subscriptions.create(
       {
         channel: 'PollingsChannel',
         polling_id: this.element.dataset.pollingId,

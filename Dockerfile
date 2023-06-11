@@ -27,12 +27,14 @@ RUN npm install
 
 # Copy application code
 COPY . .
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY $RAILS_MASTER_KEY
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile --gemfile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+RUN bundle exec rails assets:precompile
 
 # Entrypoint prepares the database.
 RUN chmod +x /rails/bin/docker-entrypoint

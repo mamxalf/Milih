@@ -21,7 +21,6 @@ export default class extends Controller {
   }
 
   _received(data) {
-    console.log('NOTIF', data);
     if (data.total !== 0) {
         data.data.forEach((d) => {
             let percentage = `${Math.floor(d.amount * 100 / data.total)}%`

@@ -7,6 +7,7 @@ export default class extends Controller {
     this.subscription = consumer.subscriptions.create(
         {
           channel: "PollingsChannel",
+          polling_id: this.element.dataset.pollingId
         },
         {
           connected: this._connected.bind(this),

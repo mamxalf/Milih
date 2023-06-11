@@ -2,7 +2,7 @@
 
 class PollingsChannel < ApplicationCable::Channel
   def subscribed
-    stream_from 'pollings'
+    stream_from "pollings_#{params[:polling_id]}"
   end
 
   def unsubscribed

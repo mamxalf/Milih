@@ -4,8 +4,8 @@ class UserPollingController < ApplicationController
   def form
     code = params[:code]
     @polling = Polling.find_by(code:)
-    if code.nil? || @polling.nil? || REDIS_CONN.get("#{request.remote_ip}::#{@polling.id}").eql?('true')
-      # if code.nil? || @polling.nil?
+    # if code.nil? || @polling.nil? || REDIS_CONN.get("#{request.remote_ip}::#{@polling.id}").eql?('true')
+    if code.nil? || @polling.nil?
       respond_to do |format|
         format.html { redirect_to user_status_pollings_url, alert: 'Polling not found!' }
       end
@@ -17,8 +17,8 @@ class UserPollingController < ApplicationController
   def submit
     answer_id = params['answer']
     polling_answer = PollingAnswer.find_by(id: answer_id)
-    if polling_answer.nil? || !REDIS_CONN.set("#{request.remote_ip}::#{polling_answer.polling_id}", true, nx: true, ex: 1.day)
-      # if polling_answer.nil?
+    # if polling_answer.nil? || !REDIS_CONN.set("#{request.remote_ip}::#{polling_answer.polling_id}", true, nx: true, ex: 1.day)
+    if polling_answer.nil?
       respond_to do |format|
         format.html { redirect_to user_status_pollings_url, alert: 'Polling not found!' }
       end

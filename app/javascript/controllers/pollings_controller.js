@@ -11,7 +11,6 @@ export default class extends Controller {
         },
         {
           connected: this._connected.bind(this),
-          disconnected: this._disconnected.bind(this),
           received: this._received.bind(this),
         }
     );
@@ -21,12 +20,16 @@ export default class extends Controller {
     console.log('POLLING', 'CONNECTED!');
   }
 
-  _disconnected() {}
-
   _received(data) {
-    // const element = this.statusTarget
-    // element.innerHTML = data
-    console.log('NOTIF', data)
+    console.log('NOTIF', data);
+    if (data.total !== 0) {
+        data.data.forEach((d) => {
+            let percentage = `${Math.floor(d.amount * 100 / data.total)}%`
+            let elementDiv = document.getElementById(d.polling_answer_id)
+            elementDiv.textContent = percentage
+            elementDiv.style.width = percentage
+        })
+    }
   }
 
   disconnect() {

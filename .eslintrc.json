@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "airbnb-base",
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "import/no-unresolved": "off",
+        "max-len": [
+            "error",
+            {
+                "code": 500
+            }
+        ],
+        "no-underscore-dangle": "off",
+        "class-methods-use-this": "off",
+        "global-require": "off",
+        "import/prefer-default-export": "off"
+    }
+}

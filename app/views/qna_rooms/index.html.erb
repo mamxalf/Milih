@@ -1,17 +1,17 @@
 <div class="flex justify-between items-center">
   <div>
-    <h2 class="text-lg font-medium text-gray-800 dark:text-white">Pollings</h2>
-    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">List pollings from Milih App</p>
+    <h2 class="text-lg font-medium text-gray-800 dark:text-white">QnA Rooms</h2>
+    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">List QnA Rooms from Milih App</p>
   </div>
-  <%= link_to 'New polling', new_polling_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <%= link_to 'New qna room', new_qna_room_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
 </div>
 
 
 <%== render partial: 'layouts/shared/flash_message' %>
 
 <div class="flex flex-col mt-6">
-  <% if @pollings.empty? %>
-    <%== render partial: 'layouts/shared/empty_section', locals: { domain: 'Pollings' } %>
+  <% if @qna_rooms.empty? %>
+    <%== render partial: 'layouts/shared/empty_section', locals: { domain: 'QnA Rooms' } %>
   <% else %>
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -44,7 +44,7 @@
               </thead>
               <%= turbo_stream_from current_user.id %>
               <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900" is="turbo-frame" id="pollings">
-                <%= render @pollings %>
+              <%= render @qna_rooms %>
               </tbody>
             </table>
           </div>

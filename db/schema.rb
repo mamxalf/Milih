@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_02_011649) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_221734) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "pgcrypto"
@@ -36,6 +36,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_02_011649) do
     t.index ["user_id"], name: "index_pollings_on_user_id"
   end
 
+  create_table "qna_rooms", force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "code", default: -> { "md5((random())::text)" }, null: false
+    t.string "string", default: -> { "md5((random())::text)" }, null: false
+    t.string "title"
+    t.text "description"
+    t.datetime "duration", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_qna_rooms_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -51,4 +63,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_02_011649) do
 
   add_foreign_key "polling_answers", "pollings"
   add_foreign_key "pollings", "users"
+  add_foreign_key "qna_rooms", "users"
 end

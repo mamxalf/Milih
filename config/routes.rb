@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :qna_rooms
   # polling's
   resources :pollings do
     collection do

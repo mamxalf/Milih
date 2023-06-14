@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   # qna's
   resources :qna_rooms
-  get 'qna_questions/ask_question'
+  post 'qna_questions/ask_question'
   get 'qna_questions/form'
 
   # polling's

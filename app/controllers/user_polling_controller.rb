@@ -38,12 +38,6 @@ class UserPollingController < ApplicationController
     end
   end
 
-  def redirect_status_page
-    respond_to do |format|
-      format.html { render 'user_polling/status' }
-    end
-  end
-
   private
 
   def get_all_amount(polling_id)

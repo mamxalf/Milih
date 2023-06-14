@@ -2,8 +2,10 @@
 
 class QnaRoom < ApplicationRecord
   before_create :generate_code
+  after_create_commit { broadcast_prepend_to user_id }
 
   belongs_to :user
+  has_many :qna_questions, dependent: :destroy
 
   private
 

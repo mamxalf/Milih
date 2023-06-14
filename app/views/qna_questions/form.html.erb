@@ -14,7 +14,7 @@
   </section>
 <% else %>
   <div>
-    <br />
+    <br/>
     <div class="mx-auto md:w-2/3 w-full">
       <div class="flex justify-between items-center">
         <h1 class="font-bold text-4xl"><%= @room.title %> - <%= @room.code %></h1>
@@ -36,13 +36,15 @@
         <% end %>
       </div>
 
-      <div id="question">
-        <ol class="relative border-l border-gray-200 dark:border-gray-700 overflow-y-auto">
-        <%= turbo_stream_from @room.id %>
-          <% @room.qna_questions.order(created_at: :desc).each do |qna| %>
-            <%== render partial: 'qna_questions/qna_question', locals: { room: @room, qna: qna } %>
-          <% end %>
-        </ol>
+      <div id="question" class="overflow-hidden">
+        <div class="overflow-y-auto" style="max-height: 54vh;">
+          <%= turbo_stream_from @room.id %>
+          <ol class="relative border-l border-gray-200 dark:border-gray-700 overflow-y-auto">
+            <% @room.qna_questions.order(created_at: :desc).each do |qna| %>
+              <%== render partial: 'qna_questions/qna_question', locals: { room: @room, qna: qna } %>
+            <% end %>
+          </ol>
+        </div>
       </div>
 
     </div>

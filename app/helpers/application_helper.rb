@@ -4,6 +4,8 @@ module ApplicationHelper
   include Pagy::Frontend
 
   def seconds_to_hms(duration)
+    return 'No Time' if duration.nil?
+
     sec = duration - Time.zone.now
     return 'Time is Over' if sec.negative?
 

@@ -1,0 +1,20 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl"><%= @qna_room.title %> - <%= @qna_room.code %></h1>
+    <%= link_to 'Back to QnA Rooms', qna_rooms_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+
+  <div class="mt-5 p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-900 dark:text-blue-400" role="alert">
+    <%= @qna_room.description %>
+  </div>
+
+  <div id="question">
+    <%= turbo_stream_from @qna_room.id %>
+    <ol class="relative border-l border-gray-200 dark:border-gray-700 overflow-y-auto" is="turbo-frame" id="qna_questions">
+      <% @qna_room.qna_questions.order(created_at: :desc).each do |qna| %>
+        <%== render partial: 'qna_questions/qna_question', locals: { room: @qna_room, qna: qna } %>
+      <% end %>
+    </ol>
+  </div>
+
+</div>

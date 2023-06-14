@@ -11,7 +11,7 @@ class PollingsController < ApplicationController
 
   # GET /pollings or /pollings.json
   def index
-    @pagy, @pollings = pagy(Polling.includes([:polling_answers]).where(user_id: current_user.id).order(created_at: :desc))
+    @pagy, @pollings = pagy(Polling.where(user_id: current_user.id).order(created_at: :desc))
   end
 
   # GET /pollings/1 or /pollings/1.json
@@ -83,11 +83,5 @@ class PollingsController < ApplicationController
   def polling_params
     params['polling']['duration'] = Time.parse(params['polling']['duration']).utc
     params.require(:polling).permit(:title, :duration).merge(user_id: current_user.id)
-  end
-
-  def handle_record_not_found
-    respond_to do |format|
-      format.html { redirect_to pollings_url, alert: 'Polling Not Found!' }
-    end
   end
 end

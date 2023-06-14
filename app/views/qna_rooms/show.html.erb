@@ -10,7 +10,7 @@
 
   <div id="question">
     <ol class="relative border-l border-gray-200 dark:border-gray-700 overflow-y-auto">
-      <% @qna_room.qna_questions.each do |qna| %>
+      <% @qna_room.qna_questions.order(amount: :desc).each do |qna| %>
         <li class="mb-10 ml-6 my-5">
           <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600">
             <div class="items-center justify-between mb-3 sm:flex">

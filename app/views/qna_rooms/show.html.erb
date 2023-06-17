@@ -8,13 +8,15 @@
     <%= @qna_room.description %>
   </div>
 
-  <div id="question">
+  <div id="question" class="overflow-hidden">
+    <div class="overflow-y-auto" style="max-height: 72vh;">
     <%= turbo_stream_from @qna_room.id %>
-    <ol class="relative border-l border-gray-200 dark:border-gray-700 overflow-y-auto" is="turbo-frame" id="qna_questions">
-      <% @qna_room.qna_questions.order(created_at: :desc).each do |qna| %>
-        <%== render partial: 'qna_questions/qna_question', locals: { room: @qna_room, qna: qna } %>
-      <% end %>
-    </ol>
+      <ol class="relative border-l border-gray-200 dark:border-gray-700" is="turbo-frame" id="qna_questions" style="overflow-y: auto;">
+        <% @qna_room.qna_questions.order(created_at: :desc).each do |qna| %>
+          <%== render partial: 'qna_questions/qna_question', locals: { room: @qna_room, qna: qna } %>
+        <% end %>
+      </ol>
+    </div>
   </div>
 
 </div>

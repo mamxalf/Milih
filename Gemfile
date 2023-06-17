@@ -60,6 +60,9 @@ gem 'hashie', '~> 5.0'
 # pagy for pagination
 gem 'pagy', '~> 6.0' # omit patch digit
 
+# monitoring
+gem "skylight"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]

@@ -222,6 +222,8 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
     ruby-progressbar (1.13.0)
+    skylight (5.3.4)
+      activesupport (>= 5.2.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -277,6 +279,7 @@ DEPENDENCIES
   rubocop
   rubocop-performance (~> 1.17, >= 1.17.1)
   rubocop-rails (~> 2.18)
+  skylight
   sprockets-rails
   stimulus-rails
   tailwindcss-rails
